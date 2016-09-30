@@ -181,6 +181,7 @@ def _port_dict(port, fields=None):
            "security_groups": [group.get("id", None) for group in
                                port.get("security_groups", None)],
            "device_id": port.get("device_id"),
+           ##"binding:vif_type": "bridge", ## alexm
            "device_owner": port.get("device_owner")}
 
     if "mac_address" in res and res["mac_address"]:
@@ -244,6 +245,8 @@ def _make_port_dict(port, fields=None):
         ips.append(assoc.ip_address)
     res["fixed_ips"] = [_make_port_address_dict(ip, port, fields)
                         for ip in ips if _ip_is_fixed(port, ip)]
+    res["binding:vif_type"] = 'bridge'
+    res["binding:vif_details"] = {"bridge_name": "public_net"}
     return res
 
 
@@ -262,6 +265,8 @@ def _make_ports_list(query, fields=None):
         port_dict["fixed_ips"] = [_make_port_address_dict(ip, port, fields)
                                   for ip in port.ip_addresses if
                                   _ip_is_fixed(port, ip)]
+        port_dict["binding:vif_type"] = "bridge"
+        port_dict["binding:vif_details"] = {"bridge_name": "public_net"}
         ports.append(port_dict)
     return ports
 

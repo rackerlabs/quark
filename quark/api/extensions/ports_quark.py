@@ -53,6 +53,10 @@ EXTENDED_ATTRIBUTES_2_0 = {
                            "is_visible": False, "default": ''},
         "instance_node_id": {"allow_post": True, "allow_put": False,
                              "default": '', "is_visible": False},
+        "binding:vif_type": {"allow_post": True, "allow_put": False,
+                             "default": 'bridge', "is_visible": True},
+        "binding:vif_details": {"allow_post": True, "allow_put": False,
+                             "default": {}, "is_visible": True},
     }
 }
 

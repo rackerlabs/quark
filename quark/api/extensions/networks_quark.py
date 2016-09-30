@@ -25,7 +25,11 @@ EXTENDED_ATTRIBUTES_2_0 = {
         "network_plugin": {"allow_post": True, "allow_put": False,
                            "is_visible": False, "default": False},
         "id": {"allow_post": True, "allow_put": False,
-               "is_visible": True, "default": False}}}
+               "is_visible": True, "default": False},
+        "router:external": {"allow_post": True, "allow_put": False,
+               "is_visible": True, "default": False}
+    }
+}
 
 
 class Networks_quark(extensions.ExtensionDescriptor):

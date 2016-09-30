@@ -348,7 +348,8 @@ def create_port(context, port):
         backend_port = _allocate_backend_port(mac, addresses, net, port_id)
         new_port = _allocate_db_port(port_attrs, backend_port, addresses, mac)
 
-    return v._make_port_dict(new_port)
+    x = v._make_port_dict(new_port)
+    return x
 
 
 def update_port(context, id, port):
@@ -563,7 +564,8 @@ def get_ports(context, limit=None, sorts=None, marker=None, page_reverse=False,
         ports = db_api.port_find(context, limit, sorts, marker,
                                  fields=fields, join_security_groups=True,
                                  **filters)
-    return v._make_ports_list(ports, fields)
+    x = v._make_ports_list(ports, fields)
+    return x
 
 
 def get_ports_count(context, filters=None):
